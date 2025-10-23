@@ -337,7 +337,7 @@ section {
   box-shadow: 0 0 8px var(--main-glow);
 }
 
-/* Contact Form Improvements */
+/* Contact: FINAL aligned version */
 .contact {
   width: 100%;
   max-width: 500px;
@@ -345,20 +345,24 @@ section {
   padding: 2em;
   border-radius: 13px;
   box-shadow: var(--border-glow);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form {
+  width: 100%;
 }
 .input-box {
   display: flex;
-  gap: 2em;
-}
-.input-field,
-.textarea-field {
+  gap: 1.2em;
   width: 100%;
-  box-sizing: border-box;
+}
+.input-field {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
-.input-field input,
-.textarea-field textarea {
+.input-field input {
   width: 100%;
   padding: 1em 1.5em;
   border-radius: .7em;
@@ -367,17 +371,34 @@ section {
   margin-bottom: 1em;
   background: var(--glass-strong);
   color: var(--text-color);
-  outline: none;
+  box-sizing: border-box;
+}
+.textarea-field {
+  width: 100%;
+  margin-top: 0.7em;
+  margin-bottom: 1em;
 }
 .textarea-field textarea {
+  width: 100%;
   min-height: 110px;
+  padding: 1em 1.5em;
+  border-radius: .7em;
+  border: none;
+  font-size: 1.3rem;
+  background: var(--glass-strong);
+  color: var(--text-color);
+  box-sizing: border-box;
   resize: vertical;
 }
-.input-field input:focus,
-.textarea-field textarea:focus {
-  box-shadow: 0 0 8px var(--main-glow);
+.btn {
+  display: inline-block;
+  min-width: 120px;
+  padding: 1em 2em;
+  margin-top: 1em;
+  font-size: 1.1rem;
 }
 
+/* Footer */
 .footer {
   width: 100vw;
   display: flex;
@@ -437,7 +458,11 @@ section {
   }
   .input-box {
     flex-direction: column;
-    gap: 0;
+    gap: 0.5em;
+  }
+  .btn {
+    width: 100%;
+    margin-top: 0.5em;
   }
 }
 
