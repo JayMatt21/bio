@@ -72,13 +72,15 @@ function About() {
     <section id="about" className="about">
       <div className="container">
         <h2 className="heading">About <span>Me</span></h2>
-        <div className="about-img">
-          <img src="/bio.jpg" alt="profile" style={{ width: '190px', height: '190px', objectFit: 'cover', borderRadius: '50%' }} />
-          <span className="circle-spin"></span>
-        </div>
-        <div className="about-content">
-          <h3>Working Student at NU-Dasma</h3>
-          <p>Currently working in an International IT Company as Managaer / Consultant</p>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="about-img">
+            <img src="/bio.jpg" alt="profile" style={{ width: '190px', height: '190px', objectFit: 'cover', borderRadius: '50%' }} />
+            <span className="circle-spin"></span>
+          </div>
+          <div className="about-content">
+            <h3>Working Student at NU-Dasma</h3>
+            <p>Currently working in an International IT Company as Manager / Consultant</p>
+          </div>
         </div>
       </div>
     </section>
@@ -107,7 +109,7 @@ function Education() {
             <div className="education-box">
               <div className="education-content">
                 <div className="year">2002 - 2005</div>
-                <h3>City College of Manila - BS COmputer Science</h3>
+                <h3>City College of Manila - BS Computer Science</h3>
                 <p>Completed 3 years before shifting to IT</p>
               </div>
             </div>
