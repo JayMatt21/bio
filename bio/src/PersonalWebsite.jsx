@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './PersonalWebsite.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,8 +19,18 @@ export default function PersonalWebsite() {
   );
 }
 
-// Header Component
+// Header Component (with hamburger mobile menu)
 function Header() {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  function handleMenuClick() {
+    setMobileNavOpen(prev => !prev);
+  }
+
+  function handleLinkClick() {
+    setMobileNavOpen(false);
+  }
+
   return (
     <header className="header">
       <div className="container">
@@ -27,19 +38,22 @@ function Header() {
           <img src="/logo.jpg" alt="Logo" style={{ height: '38px', marginRight: '12px', verticalAlign: 'middle', borderRadius: '8px' }} />
           Facetrack
         </div>
-        <nav className="navbar">
-          <a href="#home" className="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+        <nav className={`navbar ${mobileNavOpen ? 'open' : ''}`}>
+          <a href="#home" className="active" onClick={handleLinkClick}>Home</a>
+          <a href="#about" onClick={handleLinkClick}>About</a>
+          <a href="#education" onClick={handleLinkClick}>Education</a>
+          <a href="#skills" onClick={handleLinkClick}>Skills</a>
+          <a href="#contact" onClick={handleLinkClick}>Contact</a>
         </nav>
+        <button className="nav-hamburger" onClick={handleMenuClick} aria-label="Toggle navigation">
+          <span className={mobileNavOpen ? "hamburger open" : "hamburger"}></span>
+        </button>
       </div>
     </header>
   );
 }
 
-// Home Component
+// Home
 function Home() {
   return (
     <section id="home" className="home">
@@ -66,7 +80,7 @@ function Home() {
   );
 }
 
-// About Component
+// About
 function About() {
   return (
     <section id="about" className="about">
@@ -87,7 +101,7 @@ function About() {
   );
 }
 
-// Education Component
+// Education
 function Education() {
   return (
     <section id="education" className="education">
@@ -120,7 +134,7 @@ function Education() {
   );
 }
 
-// Skills Component
+// Skills
 function Skills() {
   return (
     <section id="skills" className="skills">
@@ -141,7 +155,7 @@ function Skills() {
   );
 }
 
-// Contact Component
+// Contact
 function Contact() {
   return (
     <section id="contact" className="contact">
@@ -166,7 +180,7 @@ function Contact() {
   );
 }
 
-// Footer Component
+// Footer
 function Footer() {
   return (
     <footer className="footer">

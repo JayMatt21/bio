@@ -49,7 +49,7 @@ section {
   justify-content: center;
 }
 
-/* Header and Navbar */
+/* Header, Navbar, Hamburger */
 .header {
   position: fixed;
   top: 0;
@@ -81,6 +81,52 @@ section {
 .logo img {
   margin-right: 12px;
 }
+
+/* Hamburger button styling */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+  height: 40px;
+  width: 40px;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  background: var(--main-glow);
+  height: 4px;
+  width: 30px;
+  border-radius: 5px;
+  transition: all 0.3s;
+  position: relative;
+}
+.hamburger {
+  top: 18px;
+}
+.hamburger::before {
+  position: absolute;
+  top: -10px;
+  left: 0;
+}
+.hamburger::after {
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+.hamburger.open {
+  background: transparent;
+}
+.hamburger.open::before {
+  transform: translateY(10px) rotate(45deg);
+}
+.hamburger.open::after {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -353,28 +399,37 @@ section {
   box-shadow: 0 0 7px var(--main-glow);
 }
 
-/* -------- RESPONSIVE DESIGN -------- */
-@media (max-width: 990px) {
-  .container {
-    padding: 0 1rem;
-  }
-  .header .container,
-  .home .container,
-  .education-row,
-  .skills-row,
-  .footer .container {
-    flex-direction: column !important;
-    gap: 1.2rem !important;
-    align-items: center !important;
-  }
-  section {
-    padding: 4rem 0 1.5rem 0;
+/* -------- RESPONSIVE DESIGN + Drawer -------- */
+@media (max-width: 900px) {
+  .nav-hamburger {
+    display: block;
   }
   .navbar {
-    gap: 1.1rem;
+    position: fixed;
+    top: 62px;
+    right: 0;
+    height: calc(100vh - 62px);
+    width: 70vw;
+    max-width: 280px;
+    background: var(--glass-strong);
+    box-shadow: -8px 0 30px var(--main-glow);
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 1.2rem !important;
+    padding: 2.2rem 1.7rem;
+    transform: translateX(100%);
+    transition: transform 0.25s;
+    z-index: 105;
+  }
+  .navbar.open {
+    transform: translateX(0);
+  }
+  .header .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
-
 @media (max-width: 600px) {
   html {
     font-size: 50%;
@@ -386,10 +441,8 @@ section {
     font-size: 1.6rem;
   }
   .navbar {
-    flex-direction: column;
-    gap: 0.6rem;
-    font-size: 1.1rem;
-    padding: 0.7rem 0;
+    width: 92vw;
+    padding: 1.2rem 1rem;
   }
   .home-content h1 {
     font-size: 2rem;
